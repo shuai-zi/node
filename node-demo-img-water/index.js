@@ -5,7 +5,7 @@ const images = require('images');
 const watermarkImg = images('water_logo.png')
 //
 function readFileList (path, filesList) {
-	var files = fs.readdirSync(path);//同步读取path目录下的所有文件，返回一个数组
+	var files = fs.readdirSync(path);//同步读取path目录下的所有文件名称，返回一个数组
 	files.forEach(function(item, index){
 		var stat = fs.statSync(path + item);
 		if (stat.isDirectory()) {//true则为文件夹
@@ -35,7 +35,8 @@ function getImageFiles (path) {
 	return imageList;
 }
 //获取文件夹下的所有图片
-var photos = getImageFiles("./img/");
+//var photos = getImageFiles("./img/");
+var photos = fs.readdirSync('./img/') //返回一个'./img/'目录下的所有文件名称
 for(var i = 0; i<photos.length; i++){
 	var img = images('./img/' + photos[i]);
 	var newImgName = photos[i];
