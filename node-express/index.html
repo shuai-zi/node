@@ -1,59 +1,62 @@
 <!DOCTYPE >
 <html>
-	<head>
-		<meta charset="utf-8"/>
-		<title>node</title>
-		<style type="text/css">
-			*{
-				text-align: center;
-			}
-		</style>
-	</head>
-	<body>
-		<div id="app">
-			<h1>hello world</h1>
-			<ul>
-			</ul>
-		</div>
-		<script src="https://unpkg.com/vue"></script>
-		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-	</body>
+
+<head>
+    <meta charset="utf-8" />
+    <title>node</title>
+    <style type="text/css">
+    * {
+        text-align: center;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>hello world</h1>
+        <ul>
+        </ul>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+</body>
+
 </html>
 <script type="text/javascript">
-	$.ajax({
-		type:'get',
-		dataType: 'json',
-		url:'http://localhost:3000/text/info',
-		success:function(data){
-			console.log(data);
-		},
-		error:function(){
-			console.log('失败');
-		},
-		data:{name:'sw'},
-	})
-	$.ajax({
-		type:'get',
-		dataType: 'json',
-		url:'http://localhost:3000/user/user_id',
-		success:function(data){
-			console.log(data);
-		},
-		error:function(){
-			console.log('失败');
-		},
-		data:{id:0},
-	})
-	$.ajax({
-		type:'get',
-		dataType: 'json',
-		url:'http://localhost:3000/update/name',
-		success:function(data){
-			console.log(data);
-		},
-		error:function(){
-			console.log('失败');
-		},
-		data:{name:'sw',id:1},
-	})
+$.ajax({
+    type: 'get',
+    dataType: 'json',
+    url: 'http://localhost:3000/text/info',
+    success: function(data) {
+        console.log(data);
+    },
+    error: function() {
+        console.log('失败');
+    },
+    data: { name: 'sw' },
+})
+$.ajax({
+    type: 'get',
+    dataType: 'json',
+    url: 'http://localhost:3000/user/user_id',
+    success: function(data) {
+        console.log(data);
+    },
+    error: function() {
+        console.log('失败');
+    },
+    data: { id: 0 },
+})
+$.ajax({
+    type: 'get',
+    dataType: 'json',
+    url: 'http://localhost:3000/update/name',
+    success: function(data) {
+        console.log(data);
+    },
+    error: function() {
+        console.log('失败');
+    },
+    data: { name: 'sw', id: 1 },
+})
 </script>
