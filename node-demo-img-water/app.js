@@ -10,7 +10,7 @@ var mW = watermarkImg.width();
 var mH = watermarkImg.height();
 
 images(img)
-//设置绘制的坐标位置，右下角距离 10px
-.draw(watermarkImg,W - mW - 10,H - mH - 10)
-//保存
-.save('./saveImg/saveimg.png');
+    //设置绘制的坐标位置，右下角距离 10px
+    .draw(watermarkImg, W - mW - 10, H - mH - 10)
+    //保存
+    .save('./saveImg/saveimg.png');
