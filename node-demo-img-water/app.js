@@ -3,7 +3,6 @@ var fs = require('fs')
 var images = require('images');
 var watermarkImg = images('water_logo.png');
 var img = images('./img/afajr_r0.png');
-
 //放置右下角
 var W = img.width();
 var H = img.height();
