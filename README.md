@@ -5,6 +5,7 @@
 ###### tip:数据库名 world 表名 city 都是安装mysql的初始自带的练习库和表
 
 ###### 设置跨域访问
+```
 app.all('*', function(req, res, next) {
 	res.header("Access-Control-Allow-Origin", "*");
 	res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -13,3 +14,4 @@ app.all('*', function(req, res, next) {
 	res.header("Content-Type", "application/json;charset=utf-8");
 	next();
 })
+```
