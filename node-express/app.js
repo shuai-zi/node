@@ -19,6 +19,8 @@ app.all('*', function(req, res, next) {
 const indexRouter = require('./routes/index');
 const userRouter = require('./routes/users');
 const updateRouter = require('./routes/update');
+const insertRouter = require('./routes/insert');
+const deleteRouter = require('./routes/delete');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -34,8 +36,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-
 app.get('/', function(req, res){
   // res.setContentType("text/html");
   res.sendfile(__dirname + '/index.html');
@@ -44,6 +44,8 @@ app.get('/', function(req, res){
 app.use('/text', indexRouter);
 app.use('/user', userRouter);
 app.use('/update', updateRouter);
+app.use('/insert', insertRouter);
+app.use('/delete', deleteRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

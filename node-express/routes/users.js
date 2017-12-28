@@ -4,7 +4,7 @@ const connectSql = require('../mysql/mysql');
  
 router.get("/user_id", function(req, res) {
 	//用用户id去查信息
-	var sql = "select * from city where id = " + req.query.id
+	var sql = "select * from city where id <= " + req.query.id
 	connectSql(sql, function(err, result, next) {
 		if(err) {
 			console.log(err.message);

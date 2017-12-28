@@ -65,48 +65,82 @@
 </html>
 <script type="text/javascript">
 $(function() {
-    var socket = io("http://localhost:3000");
-    $('form').submit(function(){
-      socket.emit('message', $('#m').val());
-      $('#m').val('');
-      return false;
-    });
-
-    // $.ajax({
-    //     type: 'get',
-    //     dataType: 'json',
-    //     url: 'http://localhost:3000/text/info',
-    //     success: function(data) {
-    //         console.log(data);
-    //     },
-    //     error: function() {
-    //         console.log('失败');
-    //     },
-    //     data: { name: 'sw' },
-    // })
-    // $.ajax({
-    //     type: 'get',
-    //     dataType: 'json',
-    //     url: 'http://localhost:3000/user/user_id',
-    //     success: function(data) {
-    //         console.log(data);
-    //     },
-    //     error: function() {
-    //         console.log('失败');
-    //     },
-    //     data: { id: 0 },
-    // })
-    // $.ajax({
-    //     type: 'get',
-    //     dataType: 'json',
-    //     url: 'http://localhost:3000/update/name',
-    //     success: function(data) {
-    //         console.log(data);
-    //     },
-    //     error: function() {
-    //         console.log('失败');
-    //     },
-    //     data: { name: 'sw', id: 1 },
-    // })
+    $.ajax({
+        type: 'get',
+        dataType: 'json',
+        url: 'http://localhost:3000/text/info',
+        success: function(result) {
+            console.log(result);
+        },
+        error: function() {
+            console.log('失败');
+        },
+        data: { name: 'sw' },
+    })
+    insert(1)
+    console.log('插入id=1的数据')
+    Delete(1)
+    console.log('删除id=1的数据')
+    update(10,'sw')
+    console.log('修改id=10的name')
+    select(10)
+    console.log('查询id小于10的')
 });
+const insert =(id) =>{
+    $.ajax({
+        type: 'get',
+        dataType: 'json',
+        url: 'http://localhost:3000/insert/insertUser',
+        success: function(result) {
+            console.log(result);
+        },
+        error: function() {
+            console.log('失败');
+        },
+        data: { name: 'sw', id: id, CountryCode:'AFG',District:'sh',Population:111111 },
+    })
+}
+const Delete = (id)=>{
+    $.ajax({
+        type: 'get',
+        dataType: 'json',
+        url: 'http://localhost:3000/delete/deleteUser',
+        success: function(result) {
+            console.log(result);
+        },
+        error: function() {
+            console.log('失败');
+        },
+        data: { id: id},
+    })
+}
+const select = (id) =>{
+    //查询id小于10的
+    $.ajax({
+        type: 'get',
+        dataType: 'json',
+        url: 'http://localhost:3000/user/user_id',
+        success: function(result) {
+            console.log(result);
+        },
+        error: function() {
+            console.log('失败');
+        },
+        data: { id: id },
+    })
+}
+const update = (id,name) =>{
+    $.ajax({
+        type: 'get',
+        dataType: 'json',
+        url: 'http://localhost:3000/update/name',
+        success: function(result) {
+            console.log(result);
+        },
+        error: function() {
+            console.log('失败');
+        },
+        data: { name: name, id: id },
+    })
+}
 </script>
