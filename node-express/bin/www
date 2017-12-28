@@ -3,7 +3,6 @@
 /**
  * Module dependencies.
  */
-
 var app = require('../app');
 var debug = require('debug')('node-express:server');
 var http = require('http');
@@ -18,9 +17,7 @@ app.set('port', port);
 /**
  * Create HTTP server.
  */
-
 var server = http.createServer(app);
-
 /**
  * Listen on provided port, on all network interfaces.
  */
@@ -28,6 +25,20 @@ var server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
+var io = require('socket.io')(server);
+//长连接
+io.on('connection', function(socket){
+  socket.on('chat message', function(msg){
+    console.log('message: ' + msg);
+  });
+});
+io.on('message', function(socket){
+  socket.on('message', function(msg){
+    console.log('message: ' + msg);
+  });
+});
+
 
 /**
  * Normalize a port into a number, string, or false.

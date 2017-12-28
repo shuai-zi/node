@@ -5,13 +5,14 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var app = express();
+
 //设置跨域访问
 app.all('*', function(req, res, next) {
 	res.header("Access-Control-Allow-Origin", "*");
 	res.header("Access-Control-Allow-Headers", "X-Requested-With");
 	res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
 	res.header("X-Powered-By", ' 3.2.1');
-	res.header("Content-Type", "application/json;charset=utf-8");
+	res.header("Content-Type", "text/html;charset=utf-8");
 	next();
 })
 //路由
@@ -22,6 +23,7 @@ const updateRouter = require('./routes/update');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+// app.set("view engine", "html");
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -32,6 +34,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+
+app.get('/', function(req, res){
+  // res.setContentType("text/html");
+  res.sendfile(__dirname + '/index.html');
+  // res.send("<H1>Hello World<H1>")
+});
 app.use('/text', indexRouter);
 app.use('/user', userRouter);
 app.use('/update', updateRouter);
@@ -53,5 +62,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
 
 module.exports = app;
