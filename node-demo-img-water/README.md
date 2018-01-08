@@ -4,7 +4,7 @@ node 给图片上水印
 
 ### index.js是批量给图片加水印
 
-改项目依赖两个库images和imageinfo
+项目依赖两个库images和imageinfo
 ----------------
 # 准备工作
 
