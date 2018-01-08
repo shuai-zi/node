@@ -1,19 +1,15 @@
 const express = require('express')
 const router = express.Router()
 const connectSql = require('../mysql/mysql');
-
-router.get('/insertUser',function (req,res) {
-	var sql = 'insert into city value('
-	+req.query.id+','
-	+"'"+req.query.name+"',"
-	+"'"+req.query.CountryCode+"',"
-	+"'"+req.query.District+"',"
-	+req.query.Population
-	+')'
-	connectSql(sql, function(err, result,next){
-		if (err) {
-			console.log(err.message);
-		}else{
+ 
+router.get("/user", function(req, res) {
+	//更新用户名称
+	var sql = "insert into city values(" + [req.query.id,"'"+req.query.name+"'","'"+req.query.CountryCode+"'","'"+req.query.District+"'",req.query.Population].join(',') + ")"
+	console.log(sql)
+	connectSql(sql, function(err, result, next) {
+		if(err) {
+			return
+		} else {
 			res.status(200);
 			res.json({
 				data:[],
@@ -23,5 +19,4 @@ router.get('/insertUser',function (req,res) {
 		}
 	})
 })
-
 module.exports = router
